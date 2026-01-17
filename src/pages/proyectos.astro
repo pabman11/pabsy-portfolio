@@ -1,0 +1,77 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import martaFornaliImage from '@/assets/martafornali.png';
+---
+
+<BaseLayout 
+  title="Proyectos - Pablo Fornali" 
+  description="Explora los proyectos en los que he trabajado como desarrollador frontend."
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Proyectos
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Una selección de proyectos en los que he trabajado, combinando diseño y funcionalidad.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Marta Fornali Project -->
+      <ProjectCard
+        title="Marta Fornali - Cantante"
+        description="Landing page para la cantante Marta Fornali. Diseño minimalista y elegante que destaca su trabajo musical y permite a los fans conocerla mejor."
+        image={martaFornaliImage}
+        imageAlt="Captura de pantalla del sitio web de Marta Fornali"
+        technologies={['Astro', 'Tailwind CSS', 'TypeScript']}
+        liveUrl="https://martafornali.com"
+      />
+
+      <!-- Placeholder Projects -->
+      <div class="bg-gray-100 rounded-lg p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 min-h-[400px]">
+        <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">Próximamente</h3>
+        <p class="text-gray-600">
+          Más proyectos en camino...
+        </p>
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 min-h-[400px]">
+        <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">Próximamente</h3>
+        <p class="text-gray-600">
+          Más proyectos en camino...
+        </p>
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 min-h-[400px]">
+        <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">Próximamente</h3>
+        <p class="text-gray-600">
+          Más proyectos en camino...
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center bg-gray-50 rounded-lg p-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        ¿Trabajamos juntos?
+      </h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Si tienes un proyecto en mente, no dudes en contactarme.
+      </p>
+      <a href="/contacto" class="btn-primary inline-block">
+        Contactar
+      </a>
+    </div>
+  </div>
+</BaseLayout>
