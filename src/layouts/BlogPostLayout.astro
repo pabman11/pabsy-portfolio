@@ -1,0 +1,74 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: string;
+  cover: ImageMetadata;
+  coverAlt: string;
+  tags: string[];
+}
+
+const { title, description, pubDate, cover, coverAlt, tags } = Astro.props;
+
+const formattedDate = new Date(pubDate).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Back to blog -->
+    <a href="/blog" class="inline-flex items-center text-primary hover:text-primary-dark font-medium mb-8 transition-colors">
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Volver al blog
+    </a>
+
+    <!-- Cover Image -->
+    <div class="mb-8 rounded-lg overflow-hidden">
+      <Image
+        src={cover}
+        alt={coverAlt}
+        class="w-full h-96 object-cover"
+        widths={[768, 1024, 1280]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 768px, 1024px"
+      />
+    </div>
+
+    <!-- Title and Meta -->
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        {title}
+      </h1>
+      <div class="flex flex-wrap items-center gap-4 text-gray-600 mb-4">
+        <time datetime={pubDate} class="text-sm">
+          {formattedDate}
+        </time>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="text-sm px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="prose prose-lg prose-gray max-w-none
+                prose-headings:font-bold prose-headings:text-gray-900
+                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-gray-900
+                prose-code:text-primary prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                prose-pre:bg-gray-900 prose-pre:text-gray-100
+                prose-img:rounded-lg">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
