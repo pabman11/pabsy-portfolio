@@ -1,53 +1,76 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import ContactForm from '@/components/ContactForm.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Instagram, Github, Linkedin } from "@/assets/icons";
+const socialLinks = [
+    {
+        name: "Instagram",
+        icon: Instagram,
+        url: "https://instagram.com/pabman11",
+    },
+    {
+        name: "GitHub",
+        icon: Github,
+        url: "https://github.com/pabman11",
+    },
+    {
+        name: "LinkedIn",
+        icon: Linkedin,
+        url: "https://www.linkedin.com/in/pablo-fornali-manzanas/",
+    },
+];
 ---
 
-<BaseLayout 
-  title="Contacto - Pablo Fornali" 
-  description="Ponte en contacto conmigo para colaboraciones, proyectos o simplemente para charlar."
+<BaseLayout
+    title="Contacto - Pablo Fornali"
+    description="Ponte en contacto conmigo para colaboraciones, proyectos o simplemente para charlar."
 >
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Contacto
-      </h1>
-      <p class="text-xl text-gray-600">
-        ¿Tienes alguna pregunta o propuesta? ¡Me encantaría escucharte!
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-      <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Email</h3>
-        <a href="mailto:hola@pabsy.dev" class="text-primary hover:text-primary-dark transition-colors text-lg">
-          hola@pabsy.dev
-        </a>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Redes sociales</h3>
-        <div class="flex flex-col gap-2">
-          <a 
-            href="https://instagram.com/pabman11" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="text-primary hover:text-primary-dark transition-colors"
-          >
-            Instagram
-          </a>
-          <a 
-            href="https://github.com/pabman11" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="text-primary hover:text-primary-dark transition-colors"
-          >
-            GitHub
-          </a>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Contacto
+            </h1>
+            <p class="text-xl text-gray-600">
+                ¿Tienes alguna pregunta o propuesta? ¡Me encantaría escucharte!
+            </p>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <ContactForm />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div
+                class="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+            >
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Email</h3>
+                <a
+                    href="mailto:hola@pabsy.dev"
+                    class="text-primary hover:text-primary-dark transition-colors text-lg"
+                >
+                    hola@pabsy.dev
+                </a>
+            </div>
+
+            <div
+                class="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+            >
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Redes sociales
+                </h3>
+                <div class="flex flex-col gap-2">
+                    {
+                        socialLinks.map((link) => (
+                            <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-primary hover:text-primary-dark transition-colors"
+                            >
+                                <span class="inline-block mr-2 align-middle">
+                                    <link.icon width="20" height="20" />
+                                </span>
+                                <span class="align-middle">{link.name}</span>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </BaseLayout>
