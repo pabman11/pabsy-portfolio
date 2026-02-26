@@ -1,6 +1,6 @@
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+@import '@fontsource/outfit/400.css';
+@import '@fontsource/outfit/600.css';
+@import '@fontsource/outfit/700.css';
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
@@ -8,17 +8,17 @@
 @theme {
   --color-primary: #ff6b35;
   --color-primary-dark: #e55a2b;
-  
-  --font-family-sans: Inter, system-ui, sans-serif;
+
+  --font-family-sans: Outfit, system-ui, sans-serif;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply text-gray-900 bg-white;
+    @apply text-zinc-50 bg-zinc-950;
   }
 }
 
@@ -26,8 +26,8 @@
   .btn-primary {
     @apply bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
   }
-  
+
   .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200;
+    @apply border border-zinc-700 text-zinc-300 hover:border-primary hover:text-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200;
   }
 }

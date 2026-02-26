@@ -14,7 +14,6 @@ const sortedPosts = allPosts.sort(
         new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 
-// Get all unique tags
 const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
 ---
 
@@ -23,25 +22,22 @@ const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
     description="Artículos sobre desarrollo web, programación, rol y reflexiones personales."
 >
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Blog
+        <div class="mb-14">
+            <p class="text-xs text-zinc-600 font-semibold tracking-widest uppercase mb-4">Blog</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-zinc-50 tracking-tighter leading-none">
+                Pensamientos
             </h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Pensamientos sobre desarrollo web, rol, narrativa y otros temas
-                que me apasionan.
+            <p class="text-zinc-500 mt-4 max-w-lg leading-relaxed">
+                Sobre desarrollo web, rol, narrativa y otros temas que me apasionan.
             </p>
         </div>
 
         <!-- Tags Filter -->
         <div class="mb-12">
-            <h2 class="text-lg font-semibold text-gray-900 mb-4">
-                Categorías:
-            </h2>
-            <div class="flex flex-wrap gap-3">
+            <div class="flex flex-wrap gap-2">
                 <a
                     href="/blog"
-                    class="px-4 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary-dark transition-colors"
+                    class="px-3 py-1.5 bg-primary text-white text-sm rounded-md font-medium transition-colors"
                 >
                     Todos
                 </a>
@@ -49,7 +45,7 @@ const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
                     allTags.map((tag) => (
                         <a
                             href={`/blog?tag=${tag}`}
-                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-300 transition-colors"
+                            class="px-3 py-1.5 bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm rounded-md font-medium hover:border-zinc-700 hover:text-zinc-50 transition-colors"
                         >
                             {tag}
                         </a>
@@ -59,7 +55,7 @@ const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
         </div>
 
         <!-- Blog Posts Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {
                 sortedPosts.map((post) => (
                     <BlogCard
@@ -77,10 +73,8 @@ const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
 
         {
             sortedPosts.length === 0 && (
-                <div class="text-center py-12">
-                    <p class="text-gray-600 text-lg">
-                        No hay posts disponibles todavía.
-                    </p>
+                <div class="py-20 text-center">
+                    <p class="text-zinc-600">No hay posts disponibles todavía.</p>
                 </div>
             )
         }
