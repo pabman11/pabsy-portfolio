@@ -1,137 +1,181 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('blog', ({ data }) => {
-  if (import.meta.env.ASTRO_SHOW_DRAFTS === 'true') {
-    return true;
-  }
-  return !data.draft;
+const allPosts = await getCollection("blog", ({ data }) => {
+    if (import.meta.env.ASTRO_SHOW_DRAFTS === "true") {
+        return true;
+    }
+    return !data.draft;
 });
-const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+const sortedPosts = allPosts.sort(
+    (a, b) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 const featuredPosts = sortedPosts.slice(0, 3);
 
 const skills = [
-  'Astro', 'React', 'Vue', 'TypeScript', 'JavaScript',
-  'Tailwind CSS', 'Magento 2', 'PHP', 'HTML/CSS'
+    "Astro",
+    "React",
+    "Vue",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "Magento 2",
+    "PHP",
+    "HTML/CSS",
 ];
 ---
 
 <BaseLayout
-  title="Pablo Fornali - Desarrollador Frontend"
-  description="Portfolio de Pablo Fornali. Desarrollador frontend especializado en Astro, React, Vue y Magento 2."
+    title="Pablo Fornali - Desarrollador Frontend"
+    description="Portfolio de Pablo Fornali. Desarrollador frontend especializado en Astro, React, Vue y Magento 2."
 >
-  <!-- Hero Section -->
-  <section class="relative min-h-[100dvh] flex items-center border-b border-zinc-800 overflow-hidden">
-
-    <!-- Dot grid + orange wave -->
-    <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-      <!-- Base: subtle zinc dots everywhere -->
-      <div class="absolute inset-0"
-           style="background-image: radial-gradient(circle, rgba(63,63,70,0.9) 1px, transparent 1px); background-size: 28px 28px;">
-      </div>
-      <!-- Orange dots revealed by a sweeping mask -->
-      <div class="dot-wave absolute inset-y-0 left-0 w-1/2"
-           style="background-image: radial-gradient(circle, rgba(255,107,53,0.65) 1px, transparent 1px);
-                  background-size: 28px 28px;
-                  mask-image: radial-gradient(ellipse 55% 100% at 50% 50%, black 0%, transparent 78%);
-                  -webkit-mask-image: radial-gradient(ellipse 55% 100% at 50% 50%, black 0%, transparent 78%);">
-      </div>
-      <!-- Edge fades: keep dots away from content edges -->
-      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-zinc-950 to-transparent"></div>
-      <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-zinc-950 to-transparent"></div>
-      <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent"></div>
-    </div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-      <div class="max-w-3xl">
-        <p class="text-primary font-semibold text-xs tracking-widest uppercase mb-8">
-          Desarrollador Frontend
-        </p>
-        <h1 class="text-6xl md:text-8xl font-bold text-zinc-50 tracking-tighter leading-none mb-8">
-          Pablo<br />Fornali.
-        </h1>
-        <p class="text-lg text-zinc-400 mb-10 max-w-xl leading-relaxed">
-          Desarrollador frontend en <a href="https://magestio.com" target="_blank" class="text-zinc-300 hover:text-primary transition-colors">Magestio Ecommerce</a>.
-          También me apasionan el rol y la narrativa.
-        </p>
-        <div class="flex flex-wrap gap-4 items-center">
-          <a href="/proyectos" class="btn-primary">
-            Ver proyectos
-          </a>
-          <a href="/blog" class="text-zinc-400 hover:text-zinc-50 font-semibold transition-colors">
-            Leer el blog &rarr;
-          </a>
+    <!-- Hero Section -->
+    <section
+        class="relative min-h-[100dvh] flex items-center border-b border-zinc-800 overflow-hidden"
+    >
+        <!-- Dot grid -->
+        <div
+            class="absolute inset-0 pointer-events-none select-none"
+            aria-hidden="true"
+        >
+            <!-- Base: zinc dots -->
+            <div
+                class="absolute inset-0"
+                style="background-image: radial-gradient(circle, rgba(63,63,70,0.9) 1px, transparent 1px); background-size: 28px 28px;"
+            ></div>
+            <!-- Orange dots on top: pulse opacity to "recolor" the grid -->
+            <div
+                class="dot-pulse absolute inset-0"
+                style="background-image: radial-gradient(circle, rgba(255,107,53,0.55) 1px, transparent 1px); background-size: 28px 28px;"
+            ></div>
+            <!-- Edge fades -->
+            <div class="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-zinc-950 to-transparent"></div>
+            <div class="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-zinc-950 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-zinc-950 to-transparent"></div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Skills Section -->
-  <section class="py-16 border-b border-zinc-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-xs text-zinc-600 font-semibold tracking-widest uppercase mb-8">Stack</p>
-      <div class="flex flex-wrap gap-3">
-        {skills.map((skill) => (
-          <span class="px-4 py-2 bg-zinc-900 text-zinc-400 border border-zinc-800 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-all duration-200 cursor-default">
-            {skill}
-          </span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Blog Posts -->
-  <section class="py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-baseline mb-2">
-        <p class="text-xs text-zinc-600 font-semibold tracking-widest uppercase">Últimas entradas</p>
-        <a href="/blog" class="text-primary hover:text-primary-dark text-sm font-medium transition-colors">
-          Ver todas &rarr;
-        </a>
-      </div>
-      <div class="divide-y divide-zinc-800 mt-8">
-        {featuredPosts.map((post) => (
-          <a href={`/blog/${post.slug}`} class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-6 group gap-2">
-            <div>
-              <h2 class="text-zinc-100 font-semibold group-hover:text-primary transition-colors">
-                {post.data.title}
-              </h2>
-              <p class="text-zinc-600 text-sm mt-1">
-                {post.data.tags.join(' · ')}
-              </p>
+        <!-- Content -->
+        <div
+            class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full"
+        >
+            <div class="max-w-3xl">
+                <p
+                    class="text-primary font-semibold text-xs tracking-widest uppercase mb-8"
+                >
+                    Desarrollador Frontend
+                </p>
+                <h1
+                    class="text-6xl md:text-8xl font-bold text-zinc-50 tracking-tighter leading-none mb-8"
+                >
+                    Pablo<br />Fornali.
+                </h1>
+                <p class="text-lg text-zinc-400 mb-10 max-w-xl leading-relaxed">
+                    Desarrollador frontend en <a
+                        href="https://magestio.com"
+                        target="_blank"
+                        class="text-zinc-300 hover:text-primary transition-colors"
+                        >Magestio Ecommerce</a
+                    >. También me apasionan el rol y la narrativa.
+                </p>
+                <div class="flex flex-wrap gap-4 items-center">
+                    <a href="/proyectos" class="btn-primary"> Ver proyectos </a>
+                    <a
+                        href="/blog"
+                        class="text-zinc-400 hover:text-zinc-50 font-semibold transition-colors"
+                    >
+                        Leer el blog &rarr;
+                    </a>
+                </div>
             </div>
-            <span class="text-zinc-700 text-sm shrink-0 sm:ml-8">
-              {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p
+                class="text-xs text-zinc-600 font-semibold tracking-widest uppercase mb-8"
+            >
+                Stack
+            </p>
+            <div class="flex flex-wrap gap-3">
+                {
+                    skills.map((skill) => (
+                        <span class="px-4 py-2 bg-zinc-900 text-zinc-400 border border-zinc-800 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-all duration-200 cursor-default">
+                            {skill}
+                        </span>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blog Posts -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-baseline mb-2">
+                <p
+                    class="text-xs text-zinc-600 font-semibold tracking-widest uppercase"
+                >
+                    Últimas entradas
+                </p>
+                <a
+                    href="/blog"
+                    class="text-primary hover:text-primary-dark text-sm font-medium transition-colors"
+                >
+                    Ver todas &rarr;
+                </a>
+            </div>
+            <div class="divide-y divide-zinc-800 mt-8">
+                {
+                    featuredPosts.map((post) => (
+                        <a
+                            href={`/blog/${post.slug}`}
+                            class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-6 group gap-2"
+                        >
+                            <div>
+                                <h2 class="text-zinc-100 font-semibold group-hover:text-primary transition-colors">
+                                    {post.data.title}
+                                </h2>
+                                <p class="text-zinc-600 text-sm mt-1">
+                                    {post.data.tags.join(" · ")}
+                                </p>
+                            </div>
+                            <span class="text-zinc-700 text-sm shrink-0 sm:ml-8">
+                                {new Date(post.data.pubDate).toLocaleDateString(
+                                    "es-ES",
+                                    {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "numeric",
+                                    },
+                                )}
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 </BaseLayout>
 
 <style>
-  .dot-wave {
-    animation: dot-wave 11s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  @keyframes dot-wave {
-    0%   { transform: translateX(-100%); opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { transform: translateX(300%); opacity: 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .dot-wave {
-      animation: none;
-      opacity: 0.25;
-      transform: translateX(100%);
+    .dot-pulse {
+        animation: dot-pulse 5s ease-in-out infinite;
+        will-change: opacity;
     }
-  }
+
+    @keyframes dot-pulse {
+        0%, 100% { opacity: 0; }
+        50%       { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .dot-pulse {
+            animation: none;
+            opacity: 0;
+        }
+    }
 </style>
