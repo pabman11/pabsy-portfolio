@@ -16,13 +16,13 @@
             "vars": {
                 "ASTRO_SHOW_DRAFTS": "true",
             },
-            "routes": ["staging.pabsy.dev/*"],
+            "routes": ["staging.pabsy.dev"],
         },
         "production": {
             "vars": {
                 "ASTRO_SHOW_DRAFTS": "false",
             },
-            "routes": ["pabsy.dev/*"],
+            "routes": ["pabsy.dev"],
         },
     },
 }
