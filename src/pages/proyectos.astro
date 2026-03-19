@@ -3,6 +3,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import martaFornaliImage from "@/assets/martafornali.png";
 import keyboardTesterImage from "@/assets/keyboard-tester.png";
+
+const getUrl = (path: string) => {
+    return import.meta.env.BASE_URL + path;
+};
 ---
 
 <BaseLayout
@@ -45,6 +49,8 @@ import keyboardTesterImage from "@/assets/keyboard-tester.png";
                 imageAlt="Captura de pantalla del sitio web del Keyboard Tester"
                 technologies={["Vite", "React", "Tailwind CSS"]}
                 liveUrl="https://keyboard-tester.pabsy.dev/"
+                githubUrl="https://github.com/pabman11/keyboard-tester"
+                blogPost={getUrl("blog/postmortem-keyboard-tester")}
             />
 
             <!-- Placeholder Projects -->
