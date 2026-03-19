@@ -1,72 +1,128 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import ProjectCard from '@/components/ProjectCard.astro';
-import martaFornaliImage from '@/assets/martafornali.png';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import martaFornaliImage from "@/assets/martafornali.png";
+import keyboardTesterImage from "@/assets/keyboard-tester.png";
 ---
 
 <BaseLayout
-  title="Proyectos - Pablo Fornali"
-  description="Explora los proyectos en los que he trabajado como desarrollador frontend."
+    title="Proyectos - Pablo Fornali"
+    description="Explora los proyectos en los que he trabajado como desarrollador frontend."
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="mb-14">
-      <p class="text-xs text-zinc-600 font-semibold tracking-widest uppercase mb-4">Proyectos</p>
-      <h1 class="text-5xl md:text-6xl font-bold text-zinc-50 tracking-tighter leading-none">
-        Lo que he construido.
-      </h1>
-      <p class="text-zinc-400 mt-4 max-w-lg leading-relaxed">
-        Una selección de proyectos en los que he trabajado, combinando diseño y funcionalidad.
-      </p>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="mb-14">
+            <p
+                class="text-xs text-zinc-600 font-semibold tracking-widest uppercase mb-4"
+            >
+                Proyectos
+            </p>
+            <h1
+                class="text-5xl md:text-6xl font-bold text-zinc-50 tracking-tighter leading-none"
+            >
+                Lo que he construido.
+            </h1>
+            <p class="text-zinc-400 mt-4 max-w-lg leading-relaxed">
+                Una selección de proyectos en los que he trabajado, combinando
+                diseño y funcionalidad.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Marta Fornali Project -->
+            <ProjectCard
+                title="Marta Fornali - Cantante"
+                description="Landing page para la cantante Marta Fornali. Diseño minimalista y elegante que destaca su trabajo musical y permite a los fans conocerla mejor."
+                image={martaFornaliImage}
+                imageAlt="Captura de pantalla del sitio web de Marta Fornali"
+                technologies={["Astro", "Tailwind CSS", "TypeScript"]}
+                liveUrl="https://martafornali.com"
+            />
+
+            <ProjectCard
+                title="Keyboard Tester"
+                description="Una aplicación web simple para probar teclados. Permite a los usuarios verificar el funcionamiento de cada tecla y detectar posibles problemas."
+                image={keyboardTesterImage}
+                imageAlt="Captura de pantalla del sitio web del Keyboard Tester"
+                technologies={["Vite", "React", "Tailwind CSS"]}
+                liveUrl="https://keyboard-tester.pabsy.dev/"
+            />
+
+            <!-- Placeholder Projects -->
+            <div
+                class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[380px]"
+            >
+                <svg
+                    class="w-10 h-10 text-zinc-700 mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="text-sm font-semibold text-zinc-500 mb-1">
+                    Próximamente
+                </h3>
+                <p class="text-zinc-700 text-sm">Más proyectos en camino...</p>
+            </div>
+
+            <div
+                class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[380px]"
+            >
+                <svg
+                    class="w-10 h-10 text-zinc-700 mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="text-sm font-semibold text-zinc-500 mb-1">
+                    Próximamente
+                </h3>
+                <p class="text-zinc-700 text-sm">Más proyectos en camino...</p>
+            </div>
+
+            <div
+                class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[380px]"
+            >
+                <svg
+                    class="w-10 h-10 text-zinc-700 mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="text-sm font-semibold text-zinc-500 mb-1">
+                    Próximamente
+                </h3>
+                <p class="text-zinc-700 text-sm">Más proyectos en camino...</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div
+            class="mt-16 border border-zinc-800 bg-zinc-900 rounded-xl p-12 text-center"
+        >
+            <h2 class="text-2xl font-bold text-zinc-50 mb-3">
+                ¿Trabajamos juntos?
+            </h2>
+            <p class="text-zinc-400 mb-8">
+                Si tienes un proyecto en mente, no dudes en contactarme.
+            </p>
+            <a href="/contacto" class="btn-primary inline-block"> Contactar </a>
+        </div>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Marta Fornali Project -->
-      <ProjectCard
-        title="Marta Fornali - Cantante"
-        description="Landing page para la cantante Marta Fornali. Diseño minimalista y elegante que destaca su trabajo musical y permite a los fans conocerla mejor."
-        image={martaFornaliImage}
-        imageAlt="Captura de pantalla del sitio web de Marta Fornali"
-        technologies={['Astro', 'Tailwind CSS', 'TypeScript']}
-        liveUrl="https://martafornali.com"
-      />
-
-      <!-- Placeholder Projects -->
-      <div class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[380px]">
-        <svg class="w-10 h-10 text-zinc-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        <h3 class="text-sm font-semibold text-zinc-500 mb-1">Próximamente</h3>
-        <p class="text-zinc-700 text-sm">Más proyectos en camino...</p>
-      </div>
-
-      <div class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[380px]">
-        <svg class="w-10 h-10 text-zinc-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        <h3 class="text-sm font-semibold text-zinc-500 mb-1">Próximamente</h3>
-        <p class="text-zinc-700 text-sm">Más proyectos en camino...</p>
-      </div>
-
-      <div class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[380px]">
-        <svg class="w-10 h-10 text-zinc-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        <h3 class="text-sm font-semibold text-zinc-500 mb-1">Próximamente</h3>
-        <p class="text-zinc-700 text-sm">Más proyectos en camino...</p>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="mt-16 border border-zinc-800 bg-zinc-900 rounded-xl p-12 text-center">
-      <h2 class="text-2xl font-bold text-zinc-50 mb-3">
-        ¿Trabajamos juntos?
-      </h2>
-      <p class="text-zinc-400 mb-8">
-        Si tienes un proyecto en mente, no dudes en contactarme.
-      </p>
-      <a href="/contacto" class="btn-primary inline-block">
-        Contactar
-      </a>
-    </div>
-  </div>
 </BaseLayout>
